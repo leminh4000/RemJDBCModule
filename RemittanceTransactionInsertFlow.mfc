@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mediationFlow xmlns="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlow" xmlns:RemittanceTransactionIntf="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceTransactionIntf" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport" name="RemittanceTransactionInsertFlow" targetNamespace="http://Remittance_JDBC_Common_Toolkit_Implementation/RemittanceTransactionInsertFlow">
+  <import location="RemittanceTransactionIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceTransactionIntf"/>
+  <import location="JDBCImport.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport"/>
+  <promotedProperty name="ServiceInvoke1.retryOn" group="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceTransactionInsertFlow" value="0"/>
+  <promotedProperty name="ServiceInvoke1.retryCount" group="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceTransactionInsertFlow" value="0"/>
+  <promotedProperty name="ServiceInvoke1.retryDelay" group="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceTransactionInsertFlow" value="0"/>
+  <reference name="JDBCImportPartner" portType="ns1:JDBCImport"/>
+  <interface portType="RemittanceTransactionIntf:RemittanceTransactionIntf">
+    <operation name="insert">
+      <requestFlow>
+        <node displayName="insert : RemittanceTransactionIntf" name="RemittanceTransactionIntf_insert_Input" type="Input">
+          <outputTerminal type="RemittanceTransactionIntf:insertMsg">
+            <wire targetNode="MappingRemittanceTransactionInsertReq"/>
+          </outputTerminal>
+        </node>
+        <node displayName="insert : RemittanceTransactionIntf" name="RemittanceTransactionIntf_insert_InputResponse" type="InputResponse">
+          <inputTerminal type="RemittanceTransactionIntf:insertResponseMsg"/>
+        </node>
+        <node name="ServiceInvoke1" type="ServiceInvoke">
+          <property name="referenceName" value="JDBCImportPartner"/>
+          <property name="operationName" value="createBpm_Sor_RemittanceRemittance_TransactionBG"/>
+          <property name="invocationStyle" value="6"/>
+          <property name="retryOn" promotedPropertyGroup="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceTransactionInsertFlow" promotedPropertyName="ServiceInvoke1.retryOn"/>
+          <property name="retryCount" promotedPropertyGroup="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceTransactionInsertFlow" promotedPropertyName="ServiceInvoke1.retryCount"/>
+          <property name="retryDelay" promotedPropertyGroup="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceTransactionInsertFlow" promotedPropertyName="ServiceInvoke1.retryDelay"/>
+          <inputTerminal type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGRequestMsg"/>
+          <outputTerminal type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGResponseMsg">
+            <wire targetNode="MappingRemittanceTransactionInsertResp"/>
+          </outputTerminal>
+          <outputTerminal name="timeout" type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGRequestMsg"/>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="createBpm_Sor_RemittanceRemittance_TransactionBGObjectNotFoundFaultMsg" type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGObjectNotFoundFaultMsg">
+            <wire targetNode="MappingRemittanceTransactionInsertRespNotFound"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="createBpm_Sor_RemittanceRemittance_TransactionBGUniqueConstraintFaultMsg" type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGUniqueConstraintFaultMsg">
+            <wire targetNode="MappingRemittanceTransactionInsertRespUniqueConstraint"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="createBpm_Sor_RemittanceRemittance_TransactionBGIntegrityConstraintFaultMsg" type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGIntegrityConstraintFaultMsg">
+            <wire targetNode="MappingRemittanceTransactionInsertRespIntegrityConstraint"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="createBpm_Sor_RemittanceRemittance_TransactionBGMissingDataFaultMsg" type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGMissingDataFaultMsg">
+            <wire targetNode="MappingRemittanceTransactionInsertRespMissingData"/>
+          </outputTerminal>
+          <failTerminal>
+            <wire targetNode="Fail1"/>
+          </failTerminal>
+        </node>
+        <node name="MappingRemittanceTransactionInsertResp" type="XSLTransformation">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceTransactionInsertResp_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceTransactionInsertResp_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGResponseMsg"/>
+          <outputTerminal type="RemittanceTransactionIntf:insertResponseMsg">
+            <wire targetNode="RemittanceTransactionIntf_insert_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceTransactionInsertRespNotFound" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceTransactionInsertRespNotFound_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceTransactionInsertRespNotFound_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGObjectNotFoundFaultMsg"/>
+          <outputTerminal type="RemittanceTransactionIntf:insertResponseMsg">
+            <wire targetNode="RemittanceTransactionIntf_insert_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceTransactionInsertRespUniqueConstraint" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceTransactionInsertRespUniqueConstraint_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceTransactionInsertRespUniqueConstraint_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGUniqueConstraintFaultMsg"/>
+          <outputTerminal type="RemittanceTransactionIntf:insertResponseMsg">
+            <wire targetNode="RemittanceTransactionIntf_insert_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceTransactionInsertRespIntegrityConstraint" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceTransactionInsertRespIntegrityConstraint_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceTransactionInsertRespIntegrityConstraint_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGIntegrityConstraintFaultMsg"/>
+          <outputTerminal type="RemittanceTransactionIntf:insertResponseMsg">
+            <wire targetNode="RemittanceTransactionIntf_insert_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceTransactionInsertRespMissingData" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceTransactionInsertRespMissingData_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceTransactionInsertRespMissingData_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGMissingDataFaultMsg"/>
+          <outputTerminal type="RemittanceTransactionIntf:insertResponseMsg">
+            <wire targetNode="RemittanceTransactionIntf_insert_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="Fail1" type="Fail">
+          <inputTerminal/>
+        </node>
+        <node name="MappingRemittanceTransactionInsertReq" type="XSLTransformation">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceTransactionInsertReq_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceTransactionInsertReq_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="RemittanceTransactionIntf:insertMsg"/>
+          <outputTerminal type="ns1:createBpm_Sor_RemittanceRemittance_TransactionBGRequestMsg">
+            <wire targetNode="ServiceInvoke1"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+      </requestFlow>
+      <errorFlow>
+        <node displayName="insert : RemittanceTransactionIntf" name="RemittanceTransactionIntf_insert_ErrorInput" type="ErrorInput">
+          <outputTerminal name="catchAll" type="XMLSchema:anyType"/>
+        </node>
+        <node displayName="insert : RemittanceTransactionIntf" name="RemittanceTransactionIntf_insert_InputResponse" type="InputResponse">
+          <inputTerminal type="RemittanceTransactionIntf:insertResponseMsg"/>
+        </node>
+      </errorFlow>
+    </operation>
+  </interface>
+</mediationFlow>

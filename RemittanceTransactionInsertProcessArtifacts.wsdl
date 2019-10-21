@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemittanceTransactionInsertProcess" targetNamespace="http://Remittance_JDBC_Common_Toolkit_Implementation/RemittanceTransactionInsertProcessArtifacts" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://Remittance_JDBC_Common_Toolkit_Implementation/RemittanceTransactionInsertProcessArtifacts" xmlns:wsdl0="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceTransactionIntf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <plnk:partnerLinkType name="RemittanceTransactionIntfPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:RemittanceTransactionIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <plnk:partnerLinkType name="PartnerPLT">
+    <plnk:role name="Reference">
+      <plnk:portType name="wsdl0:RemittanceTransactionIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="RemittanceTransactionIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceTransactionIntf"/>
+</wsdl:definitions>

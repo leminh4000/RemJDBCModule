@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mediationFlow xmlns="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlow" xmlns:GeneralInformationIntf="http://Remittance_JDBC_Common_Toolkit_Library/GeneralInformationIntf" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:mfcex="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlowExtension" xmlns:ns2="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport" name="GeneralInformationFlow" targetNamespace="http://RemJDBCModule/GeneralInformationFlow">
+  <import location="GeneralInformationIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/GeneralInformationIntf"/>
+  <import location="JDBCImport.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport"/>
+  <promotedProperty name="ServiceInvoke1.retryOn" group="RemJDBCModule.GeneralInformationFlow" value="0"/>
+  <promotedProperty name="ServiceInvoke1.retryCount" group="RemJDBCModule.GeneralInformationFlow" value="0"/>
+  <promotedProperty name="ServiceInvoke1.retryDelay" group="RemJDBCModule.GeneralInformationFlow" value="0"/>
+  <reference name="JDBCImportPartner" portType="ns2:JDBCImport"/>
+  <interface portType="GeneralInformationIntf:GeneralInformationIntf">
+    <operation name="upsertGeneralInformation">
+      <requestFlow mfcex:autoLayout="false">
+        <node displayName="upsertGeneralInformation : GeneralInformationIntf" name="GeneralInformationIntf_upsertGeneralInformation_Input" type="Input" mfcex:x="10" mfcex:y="75">
+          <outputTerminal type="GeneralInformationIntf:upsertGeneralInformationRequestMsg">
+            <wire targetNode="MappingGeneralInformationReq"/>
+          </outputTerminal>
+        </node>
+        <node displayName="upsertGeneralInformation : GeneralInformationIntf" name="GeneralInformationIntf_upsertGeneralInformation_InputResponse" type="InputResponse" mfcex:x="838" mfcex:y="20">
+          <inputTerminal type="GeneralInformationIntf:upsertGeneralInformationResponseMsg"/>
+        </node>
+        <node name="ServiceInvoke1" type="ServiceInvoke" mfcex:x="514" mfcex:y="99">
+          <property name="referenceName" value="JDBCImportPartner"/>
+          <property name="operationName" value="upsertBpm_Sor_RemittanceGeneral_InformationBG"/>
+          <property name="invocationStyle" value="6"/>
+          <property name="retryOn" promotedPropertyGroup="RemJDBCModule.GeneralInformationFlow" promotedPropertyName="ServiceInvoke1.retryOn"/>
+          <property name="retryCount" promotedPropertyGroup="RemJDBCModule.GeneralInformationFlow" promotedPropertyName="ServiceInvoke1.retryCount"/>
+          <property name="retryDelay" promotedPropertyGroup="RemJDBCModule.GeneralInformationFlow" promotedPropertyName="ServiceInvoke1.retryDelay"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGRequestMsg"/>
+          <outputTerminal type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGResponseMsg">
+            <wire targetNode="MappingGeneralInformationResp"/>
+          </outputTerminal>
+          <outputTerminal name="timeout" type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGRequestMsg"/>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceGeneral_InformationBGObjectNotFoundFaultMsg" type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGObjectNotFoundFaultMsg">
+            <wire targetNode="Fail1"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceGeneral_InformationBGUniqueConstraintFaultMsg" type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGUniqueConstraintFaultMsg">
+            <wire targetNode="Fail2"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceGeneral_InformationBGMultipleMatchingRecordsFaultMsg" type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGMultipleMatchingRecordsFaultMsg">
+            <wire targetNode="Fail3"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceGeneral_InformationBGIntegrityConstraintFaultMsg" type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGIntegrityConstraintFaultMsg">
+            <wire targetNode="Fail4"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceGeneral_InformationBGMissingDataFaultMsg" type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGMissingDataFaultMsg">
+            <wire targetNode="Fail5"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceGeneral_InformationBGRecordNotFoundFaultMsg" type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGRecordNotFoundFaultMsg">
+            <wire targetNode="Fail6"/>
+          </outputTerminal>
+          <failTerminal>
+            <wire targetNode="Fail7"/>
+          </failTerminal>
+        </node>
+        <node name="MappingGeneralInformationReq" type="XSLTransformation" mfcex:x="374" mfcex:y="99">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/MappingGeneralInformationReq_req_2.xsl"/>
+          <property name="XMXMap" value="xslt/MappingGeneralInformationReq_req_2.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="GeneralInformationIntf:upsertGeneralInformationRequestMsg"/>
+          <outputTerminal type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGRequestMsg">
+            <wire targetNode="ServiceInvoke1"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingGeneralInformationResp" type="XSLTransformation" mfcex:x="698" mfcex:y="51">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/MappingGeneralInformationResp_req_2.xsl"/>
+          <property name="XMXMap" value="xslt/MappingGeneralInformationResp_req_2.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceGeneral_InformationBGResponseMsg"/>
+          <outputTerminal type="GeneralInformationIntf:upsertGeneralInformationResponseMsg">
+            <wire targetNode="GeneralInformationIntf_upsertGeneralInformation_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="Fail1" type="Fail" mfcex:x="744" mfcex:y="246">
+          <property name="path" value="/body/ObjectNotFoundFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail2" type="Fail" mfcex:x="450" mfcex:y="292">
+          <property name="path" value="/body/UniqueConstraintFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail3" type="Fail" mfcex:x="307" mfcex:y="326">
+          <property name="path" value="/body/MultipleMatchingRecordsFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail4" type="Fail" mfcex:x="175" mfcex:y="329">
+          <property name="path" value="/body/IntegrityConstraintFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail5" type="Fail" mfcex:x="125" mfcex:y="290">
+          <property name="path" value="/body/MissingDataFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail6" type="Fail" mfcex:x="117" mfcex:y="238">
+          <property name="path" value="/body/RecordNotFoundFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail7" type="Fail" mfcex:x="896" mfcex:y="224">
+          <inputTerminal/>
+        </node>
+      </requestFlow>
+      <errorFlow mfcex:autoLayout="false">
+        <node displayName="upsertGeneralInformation : GeneralInformationIntf" name="GeneralInformationIntf_upsertGeneralInformation_ErrorInput" type="ErrorInput" mfcex:x="10" mfcex:y="20">
+          <outputTerminal name="catchAll" type="XMLSchema:anyType"/>
+        </node>
+        <node displayName="upsertGeneralInformation : GeneralInformationIntf" name="GeneralInformationIntf_upsertGeneralInformation_InputResponse" type="InputResponse" mfcex:x="537" mfcex:y="20">
+          <inputTerminal type="GeneralInformationIntf:upsertGeneralInformationResponseMsg"/>
+        </node>
+      </errorFlow>
+    </operation>
+  </interface>
+</mediationFlow>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:AuditHistoryIntf="http://Remittance_JDBC_Common_Toolkit_Library/AuditHistoryIntf" xmlns:ns1="http://Remittance_JDBC_Common_Toolkit_Library/AuditHistory" xmlns:process="http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="AuditHistoryProcess" name="AuditHistoryProcess">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="AuditHistoryIntf:AuditHistoryIntf">
+      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
+    </interface>
+  </interfaces>
+  <references>
+    <reference name="AuditHistoryIntfPartner">
+      <interface xsi:type="wsdl:WSDLPortType" portType="AuditHistoryIntf:AuditHistoryIntf"/>
+      <scdl:referenceQualifier xsi:type="scdl:SuspendTransaction" value="false"/>
+      <scdl:referenceQualifier xsi:type="scdl:Reliability"/>
+      <wire target="AuditHistoryFlow"/>
+    </reference>
+  </references>
+  <implementation xsi:type="process:ProcessImplementation">
+    <scdl:implementationQualifier xsi:type="scdl:Transaction" value="global"/>
+    <process bpel="/AuditHistoryProcess.bpel"/>
+  </implementation>
+</scdl:component>

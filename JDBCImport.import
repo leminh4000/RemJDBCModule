@@ -1,0 +1,1289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EIS="http://www.ibm.com/xmlns/prod/websphere/scdl/eis/6.0.0" xmlns:ns1="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="JDBCImportCopy" name="JDBCImport">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:JDBCImport">
+      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="true"/>
+    </interface>
+  </interfaces>
+  <esbBinding xsi:type="EIS:EISImportBinding" faultSelector="com.ibm.j2ca.extension.emd.runtime.WBIFaultSelectorImpl" dataBindingType="com.ibm.j2ca.jdbc.emd.databinding.JDBCDataBindingGenerator">
+    <resourceAdapter name="Remittance_JDBC_Common_Toolkit_ImplementationApp.IBM WebSphere Adapter for JDBC" type="com.ibm.j2ca.jdbc.JDBCResourceAdapter" version="7.5.0.5">
+      <properties>
+        <adapterID>001</adapterID>
+      </properties>
+    </resourceAdapter>
+    <connection type="com.ibm.j2ca.jdbc.JDBCManagedConnectionFactory" interactionType="com.ibm.j2ca.jdbc.JDBCInteractionSpec">
+      <properties>
+        <XADataSourceJNDIName>sordb</XADataSourceJNDIName>
+        <adapterID>001</adapterID>
+        <connectionType>XADataSourceJNDI</connectionType>
+        <databaseURL>jdbc:oracle:thin:@10.101.5.238:1521:sordev</databaseURL>
+        <databaseVendor>ORACLE</databaseVendor>
+        <jdbcDriverClass>oracle.jdbc.driver.OracleDriver</jdbcDriverClass>
+        <password>Tcb#12345</password>
+        <pingQuery>select 1 from dual</pingQuery>
+        <returnDummyBOForSP>false</returnDummyBOForSP>
+        <userName>BPM_SOR_REMITTANCE</userName>
+      </properties>
+    </connection>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding" method="createBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Create</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding" method="updateBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Update</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionupdateallinputbg.Bpm_Sor_RemittanceRemittance_TransactionUpdateAllInputBGDataBinding" method="updateallBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.updateallresult.UpdateAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>UpdateAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding" method="deleteBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Delete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding" method="deleteallBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.deleteallresult.DeleteAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>DeleteAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding" method="retrieveBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Retrieve</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding" method="retrieveallBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactioncontainer.Bpm_Sor_RemittanceRemittance_TransactionContainerDataBinding">
+      <faultBinding fault="MATCHES_EXCEEDED_LIMIT" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>RetrieveAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding" method="applychangesBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <interaction>
+        <properties>
+          <functionName>ApplyChanges</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding" method="existsBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.existsresult.existsresult.ExistsResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>Exists</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding" method="upsertBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbg.Bpm_Sor_RemittanceRemittance_TransactionBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Upsert</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionlistbg.Bpm_Sor_RemittanceRemittance_TransactionListBGDataBinding" method="batchcreateBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbatchresult.Bpm_Sor_RemittanceRemittance_TransactionBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchCreate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionlistbg.Bpm_Sor_RemittanceRemittance_TransactionListBGDataBinding" method="batchupdateBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbatchresult.Bpm_Sor_RemittanceRemittance_TransactionBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchUpdate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionlistbg.Bpm_Sor_RemittanceRemittance_TransactionListBGDataBinding" method="batchdeleteBpm_Sor_RemittanceRemittance_TransactionBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceremittance_transactionbatchresult.Bpm_Sor_RemittanceRemittance_TransactionBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchDelete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding" method="createBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Create</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding" method="updateBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Update</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationupdateallinputbg.Bpm_Sor_RemittanceAccounting_InformationUpdateAllInputBGDataBinding" method="updateallBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.updateallresult.UpdateAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>UpdateAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding" method="deleteBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Delete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding" method="deleteallBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.deleteallresult.DeleteAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>DeleteAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding" method="retrieveBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Retrieve</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding" method="retrieveallBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationcontainer.Bpm_Sor_RemittanceAccounting_InformationContainerDataBinding">
+      <faultBinding fault="MATCHES_EXCEEDED_LIMIT" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>RetrieveAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding" method="applychangesBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <interaction>
+        <properties>
+          <functionName>ApplyChanges</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding" method="existsBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.existsresult.existsresult.ExistsResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>Exists</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding" method="upsertBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbg.Bpm_Sor_RemittanceAccounting_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Upsert</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationlistbg.Bpm_Sor_RemittanceAccounting_InformationListBGDataBinding" method="batchcreateBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbatchresult.Bpm_Sor_RemittanceAccounting_InformationBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchCreate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationlistbg.Bpm_Sor_RemittanceAccounting_InformationListBGDataBinding" method="batchupdateBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbatchresult.Bpm_Sor_RemittanceAccounting_InformationBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchUpdate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationlistbg.Bpm_Sor_RemittanceAccounting_InformationListBGDataBinding" method="batchdeleteBpm_Sor_RemittanceAccounting_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceaccounting_informationbatchresult.Bpm_Sor_RemittanceAccounting_InformationBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchDelete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding" method="createBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Create</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding" method="updateBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Update</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentupdateallinputbg.Bpm_Sor_RemittanceDocumentUpdateAllInputBGDataBinding" method="updateallBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.updateallresult.UpdateAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>UpdateAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding" method="deleteBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Delete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding" method="deleteallBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.deleteallresult.DeleteAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>DeleteAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding" method="retrieveBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Retrieve</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding" method="retrieveallBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentcontainer.Bpm_Sor_RemittanceDocumentContainerDataBinding">
+      <faultBinding fault="MATCHES_EXCEEDED_LIMIT" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>RetrieveAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding" method="applychangesBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <interaction>
+        <properties>
+          <functionName>ApplyChanges</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding" method="existsBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.existsresult.existsresult.ExistsResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>Exists</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding" method="upsertBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbg.Bpm_Sor_RemittanceDocumentBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Upsert</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentlistbg.Bpm_Sor_RemittanceDocumentListBGDataBinding" method="batchcreateBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbatchresult.Bpm_Sor_RemittanceDocumentBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchCreate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentlistbg.Bpm_Sor_RemittanceDocumentListBGDataBinding" method="batchupdateBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbatchresult.Bpm_Sor_RemittanceDocumentBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchUpdate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentlistbg.Bpm_Sor_RemittanceDocumentListBGDataBinding" method="batchdeleteBpm_Sor_RemittanceDocumentBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancedocumentbatchresult.Bpm_Sor_RemittanceDocumentBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchDelete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding" method="createBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Create</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding" method="updateBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Update</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationupdateallinputbg.Bpm_Sor_RemittanceGeneral_InformationUpdateAllInputBGDataBinding" method="updateallBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.updateallresult.UpdateAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>UpdateAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding" method="deleteBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Delete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding" method="deleteallBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.deleteallresult.DeleteAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>DeleteAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding" method="retrieveBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Retrieve</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding" method="retrieveallBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationcontainer.Bpm_Sor_RemittanceGeneral_InformationContainerDataBinding">
+      <faultBinding fault="MATCHES_EXCEEDED_LIMIT" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>RetrieveAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding" method="applychangesBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <interaction>
+        <properties>
+          <functionName>ApplyChanges</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding" method="existsBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.existsresult.existsresult.ExistsResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>Exists</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding" method="upsertBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbg.Bpm_Sor_RemittanceGeneral_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Upsert</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationlistbg.Bpm_Sor_RemittanceGeneral_InformationListBGDataBinding" method="batchcreateBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbatchresult.Bpm_Sor_RemittanceGeneral_InformationBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchCreate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationlistbg.Bpm_Sor_RemittanceGeneral_InformationListBGDataBinding" method="batchupdateBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbatchresult.Bpm_Sor_RemittanceGeneral_InformationBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchUpdate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationlistbg.Bpm_Sor_RemittanceGeneral_InformationListBGDataBinding" method="batchdeleteBpm_Sor_RemittanceGeneral_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancegeneral_informationbatchresult.Bpm_Sor_RemittanceGeneral_InformationBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchDelete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding" method="createBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Create</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding" method="updateBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Update</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusupdateallinputbg.Bpm_Sor_RemittanceResource_StatusUpdateAllInputBGDataBinding" method="updateallBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.updateallresult.UpdateAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>UpdateAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding" method="deleteBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Delete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding" method="deleteallBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.deleteallresult.DeleteAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>DeleteAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding" method="retrieveBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Retrieve</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding" method="retrieveallBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statuscontainer.Bpm_Sor_RemittanceResource_StatusContainerDataBinding">
+      <faultBinding fault="MATCHES_EXCEEDED_LIMIT" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>RetrieveAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding" method="applychangesBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <interaction>
+        <properties>
+          <functionName>ApplyChanges</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding" method="existsBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.existsresult.existsresult.ExistsResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>Exists</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding" method="upsertBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbg.Bpm_Sor_RemittanceResource_StatusBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Upsert</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statuslistbg.Bpm_Sor_RemittanceResource_StatusListBGDataBinding" method="batchcreateBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbatchresult.Bpm_Sor_RemittanceResource_StatusBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchCreate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statuslistbg.Bpm_Sor_RemittanceResource_StatusListBGDataBinding" method="batchupdateBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbatchresult.Bpm_Sor_RemittanceResource_StatusBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchUpdate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statuslistbg.Bpm_Sor_RemittanceResource_StatusListBGDataBinding" method="batchdeleteBpm_Sor_RemittanceResource_StatusBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittanceresource_statusbatchresult.Bpm_Sor_RemittanceResource_StatusBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchDelete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding" method="createBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Create</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding" method="updateBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Update</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationupdateallinputbg.Bpm_Sor_RemittanceT24_Entry_InformationUpdateAllInputBGDataBinding" method="updateallBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.updateallresult.UpdateAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>UpdateAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding" method="deleteBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Delete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding" method="deleteallBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.deleteallresult.DeleteAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>DeleteAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding" method="retrieveBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Retrieve</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding" method="retrieveallBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationcontainer.Bpm_Sor_RemittanceT24_Entry_InformationContainerDataBinding">
+      <faultBinding fault="MATCHES_EXCEEDED_LIMIT" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>RetrieveAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding" method="applychangesBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <interaction>
+        <properties>
+          <functionName>ApplyChanges</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding" method="existsBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.existsresult.existsresult.ExistsResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>Exists</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding" method="upsertBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbg.Bpm_Sor_RemittanceT24_Entry_InformationBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Upsert</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationlistbg.Bpm_Sor_RemittanceT24_Entry_InformationListBGDataBinding" method="batchcreateBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbatchresult.Bpm_Sor_RemittanceT24_Entry_InformationBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchCreate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationlistbg.Bpm_Sor_RemittanceT24_Entry_InformationListBGDataBinding" method="batchupdateBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbatchresult.Bpm_Sor_RemittanceT24_Entry_InformationBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchUpdate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationlistbg.Bpm_Sor_RemittanceT24_Entry_InformationListBGDataBinding" method="batchdeleteBpm_Sor_RemittanceT24_Entry_InformationBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet24_entry_informationbatchresult.Bpm_Sor_RemittanceT24_Entry_InformationBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchDelete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding" method="createBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Create</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding" method="updateBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Update</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infoupdateallinputbg.Bpm_Sor_RemittanceT_Remittance_Case_InfoUpdateAllInputBGDataBinding" method="updateallBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.updateallresult.UpdateAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>UpdateAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding" method="deleteBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Delete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding" method="deleteallBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.deleteallresult.DeleteAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>DeleteAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding" method="retrieveBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Retrieve</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding" method="retrieveallBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infocontainer.Bpm_Sor_RemittanceT_Remittance_Case_InfoContainerDataBinding">
+      <faultBinding fault="MATCHES_EXCEEDED_LIMIT" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>RetrieveAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding" method="applychangesBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <interaction>
+        <properties>
+          <functionName>ApplyChanges</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding" method="existsBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.existsresult.existsresult.ExistsResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>Exists</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding" method="upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobg.Bpm_Sor_RemittanceT_Remittance_Case_InfoBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Upsert</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infolistbg.Bpm_Sor_RemittanceT_Remittance_Case_InfoListBGDataBinding" method="batchcreateBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobatchresult.Bpm_Sor_RemittanceT_Remittance_Case_InfoBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchCreate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infolistbg.Bpm_Sor_RemittanceT_Remittance_Case_InfoListBGDataBinding" method="batchupdateBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobatchresult.Bpm_Sor_RemittanceT_Remittance_Case_InfoBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchUpdate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infolistbg.Bpm_Sor_RemittanceT_Remittance_Case_InfoListBGDataBinding" method="batchdeleteBpm_Sor_RemittanceT_Remittance_Case_InfoBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_case_infobatchresult.Bpm_Sor_RemittanceT_Remittance_Case_InfoBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchDelete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding" method="createBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Create</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding" method="updateBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Update</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historyupdateallinputbg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryUpdateAllInputBGDataBinding" method="updateallBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.updateallresult.UpdateAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>UpdateAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding" method="deleteBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Delete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding" method="deleteallBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.deleteallresult.DeleteAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>DeleteAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding" method="retrieveBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Retrieve</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding" method="retrieveallBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historycontainer.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryContainerDataBinding">
+      <faultBinding fault="MATCHES_EXCEEDED_LIMIT" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>RetrieveAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding" method="applychangesBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <interaction>
+        <properties>
+          <functionName>ApplyChanges</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding" method="existsBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.existsresult.existsresult.ExistsResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>Exists</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding" method="upsertBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Upsert</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historylistbg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryListBGDataBinding" method="batchcreateBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybatchresult.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchCreate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historylistbg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryListBGDataBinding" method="batchupdateBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybatchresult.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchUpdate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historylistbg.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryListBGDataBinding" method="batchdeleteBpm_Sor_RemittanceT_Remittance_Approval_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_approval_historybatchresult.Bpm_Sor_RemittanceT_Remittance_Approval_HistoryBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchDelete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding" method="createBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Create</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding" method="updateBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Update</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historyupdateallinputbg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryUpdateAllInputBGDataBinding" method="updateallBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.updateallresult.UpdateAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>UpdateAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding" method="deleteBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Delete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding" method="deleteallBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.deleteallresult.DeleteAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>DeleteAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding" method="retrieveBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Retrieve</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding" method="retrieveallBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historycontainer.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryContainerDataBinding">
+      <faultBinding fault="MATCHES_EXCEEDED_LIMIT" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>RetrieveAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding" method="applychangesBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <interaction>
+        <properties>
+          <functionName>ApplyChanges</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding" method="existsBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.existsresult.existsresult.ExistsResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>Exists</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding" method="upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Upsert</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historylistbg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryListBGDataBinding" method="batchcreateBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybatchresult.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchCreate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historylistbg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryListBGDataBinding" method="batchupdateBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybatchresult.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchUpdate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historylistbg.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryListBGDataBinding" method="batchdeleteBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_remittance_audit_historybatchresult.Bpm_Sor_RemittanceT_Remittance_Audit_HistoryBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchDelete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding" method="createBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Create</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding" method="updateBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Update</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipupdateallinputbg.Bpm_Sor_RemittanceT_Case_RelationshipUpdateAllInputBGDataBinding" method="updateallBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.updateallresult.UpdateAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>UpdateAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding" method="deleteBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Delete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding" method="deleteallBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bulkoperationresult.deleteallresult.DeleteAllResultDataBinding">
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>DeleteAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding" method="retrieveBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Retrieve</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding" method="retrieveallBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipcontainer.Bpm_Sor_RemittanceT_Case_RelationshipContainerDataBinding">
+      <faultBinding fault="MATCHES_EXCEEDED_LIMIT" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>RetrieveAll</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding" method="applychangesBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <interaction>
+        <properties>
+          <functionName>ApplyChanges</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding" method="existsBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.existsresult.existsresult.ExistsResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>Exists</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding" method="upsertBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbg.Bpm_Sor_RemittanceT_Case_RelationshipBGDataBinding">
+      <faultBinding fault="MISSING_DATA" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="OBJECT_NOTFOUND_EXCEPTION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="RECORD_NOT_FOUND" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="MULTIPLE_MATCHING_RECORDS" faultBindingType="com.ibm.j2ca.extension.emd.runtime.MatchingFaultDataBinding"/>
+      <faultBinding fault="UNIQUECONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <faultBinding fault="INTEGRITY_CONSTRAINT_VIOLATION" faultBindingType="com.ibm.j2ca.extension.emd.runtime.WBIFaultDataBindingImpl"/>
+      <interaction>
+        <properties>
+          <functionName>Upsert</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshiplistbg.Bpm_Sor_RemittanceT_Case_RelationshipListBGDataBinding" method="batchcreateBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbatchresult.Bpm_Sor_RemittanceT_Case_RelationshipBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchCreate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshiplistbg.Bpm_Sor_RemittanceT_Case_RelationshipListBGDataBinding" method="batchupdateBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbatchresult.Bpm_Sor_RemittanceT_Case_RelationshipBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchUpdate</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+    <methodBinding inDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshiplistbg.Bpm_Sor_RemittanceT_Case_RelationshipListBGDataBinding" method="batchdeleteBpm_Sor_RemittanceT_Case_RelationshipBG" outDataBindingType="com.ibm.xmlns.prod.websphere.j2ca.jdbc.bpm_sor_remittancet_case_relationshipbatchresult.Bpm_Sor_RemittanceT_Case_RelationshipBatchResultDataBinding">
+      <interaction>
+        <properties>
+          <functionName>BatchDelete</functionName>
+        </properties>
+      </interaction>
+    </methodBinding>
+  </esbBinding>
+</scdl:import>

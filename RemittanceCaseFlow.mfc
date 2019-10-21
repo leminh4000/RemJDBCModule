@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mediationFlow xmlns="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlow" xmlns:RemittanceCaseIntf="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport" name="RemittanceCaseFlow" targetNamespace="http://Remittance_JDBC_Common_Toolkit_Implementation/RemittanceCaseFlow">
+  <import location="RemittanceCaseIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf"/>
+  <import location="JDBCImport.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport"/>
+  <promotedProperty name="ServiceInvoke1.retryOn" group="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceCaseFlow" value="0"/>
+  <promotedProperty name="ServiceInvoke1.retryCount" group="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceCaseFlow" value="0"/>
+  <promotedProperty name="ServiceInvoke1.retryDelay" group="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceCaseFlow" value="0"/>
+  <reference name="JDBCImportPartner" portType="ns1:JDBCImport"/>
+  <interface portType="RemittanceCaseIntf:RemittanceCaseIntf">
+    <operation name="upsertCaseInfo">
+      <requestFlow>
+        <node displayName="upsertCaseInfo : RemittanceCaseIntf" name="RemittanceCaseIntf_upsertCaseInfo_Input" type="Input">
+          <outputTerminal type="RemittanceCaseIntf:upsertCaseInfoRequestMsg">
+            <wire targetNode="Trace1"/>
+          </outputTerminal>
+        </node>
+        <node displayName="upsertCaseInfo : RemittanceCaseIntf" name="RemittanceCaseIntf_upsertCaseInfo_InputResponse" type="InputResponse">
+          <inputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg"/>
+        </node>
+        <node name="ServiceInvoke1" type="ServiceInvoke">
+          <property name="referenceName" value="JDBCImportPartner"/>
+          <property name="operationName" value="upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBG"/>
+          <property name="invocationStyle" value="6"/>
+          <property name="retryOn" promotedPropertyGroup="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceCaseFlow" promotedPropertyName="ServiceInvoke1.retryOn"/>
+          <property name="retryCount" promotedPropertyGroup="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceCaseFlow" promotedPropertyName="ServiceInvoke1.retryCount"/>
+          <property name="retryDelay" promotedPropertyGroup="Remittance_JDBC_Common_Toolkit_Implementation.RemittanceCaseFlow" promotedPropertyName="ServiceInvoke1.retryDelay"/>
+          <inputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGRequestMsg"/>
+          <outputTerminal name="timeout" type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGRequestMsg">
+            <wire targetNode="MappingRemittanceCaseRespErr1"/>
+          </outputTerminal>
+          <outputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGResponseMsg">
+            <wire targetNode="MappingRemittanceCaseResp"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGObjectNotFoundFaultMsg" type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGObjectNotFoundFaultMsg">
+            <wire targetNode="MappingRemittanceCaseRespErr2"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGUniqueConstraintFaultMsg" type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGUniqueConstraintFaultMsg">
+            <wire targetNode="MappingRemittanceCaseRespErr3"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGMultipleMatchingRecordsFaultMsg" type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGMultipleMatchingRecordsFaultMsg">
+            <wire targetNode="MappingRemittanceCaseRespErr4"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGIntegrityConstraintFaultMsg" type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGIntegrityConstraintFaultMsg">
+            <wire targetNode="MappingRemittanceCaseRespErr5"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGMissingDataFaultMsg" type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGMissingDataFaultMsg">
+            <wire targetNode="MappingRemittanceCaseRespErr6"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGRecordNotFoundFaultMsg" type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGRecordNotFoundFaultMsg">
+            <wire targetNode="MappingRemittanceCaseRespErr7"/>
+          </outputTerminal>
+          <failTerminal>
+            <wire targetNode="MappingRemittanceCaseRespErr8"/>
+          </failTerminal>
+        </node>
+        <node name="MappingRemittanceCaseReq" type="XSLTransformation">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceCaseReq_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceCaseReq_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="RemittanceCaseIntf:upsertCaseInfoRequestMsg"/>
+          <outputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGRequestMsg">
+            <wire targetNode="Trace2"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceCaseResp" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceCaseResp_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceCaseResp_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGResponseMsg"/>
+          <outputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg">
+            <wire targetNode="RemittanceCaseIntf_upsertCaseInfo_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceCaseRespErr1" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceCaseRespErr1_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceCaseRespErr1_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGRequestMsg"/>
+          <outputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg">
+            <wire targetNode="RemittanceCaseIntf_upsertCaseInfo_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceCaseRespErr2" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceCaseRespErr2_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceCaseRespErr2_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGObjectNotFoundFaultMsg"/>
+          <outputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg">
+            <wire targetNode="RemittanceCaseIntf_upsertCaseInfo_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceCaseRespErr3" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceCaseRespErr3_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceCaseRespErr3_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGUniqueConstraintFaultMsg"/>
+          <outputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg">
+            <wire targetNode="RemittanceCaseIntf_upsertCaseInfo_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceCaseRespErr4" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceCaseRespErr4_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceCaseRespErr4_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGMultipleMatchingRecordsFaultMsg"/>
+          <outputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg">
+            <wire targetNode="RemittanceCaseIntf_upsertCaseInfo_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceCaseRespErr5" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceCaseRespErr5_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceCaseRespErr5_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGIntegrityConstraintFaultMsg"/>
+          <outputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg">
+            <wire targetNode="RemittanceCaseIntf_upsertCaseInfo_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceCaseRespErr6" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceCaseRespErr6_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceCaseRespErr6_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGMissingDataFaultMsg"/>
+          <outputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg">
+            <wire targetNode="RemittanceCaseIntf_upsertCaseInfo_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceCaseRespErr7" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceCaseRespErr7_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceCaseRespErr7_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGRecordNotFoundFaultMsg"/>
+          <outputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg">
+            <wire targetNode="RemittanceCaseIntf_upsertCaseInfo_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="Trace1" type="Trace">
+          <inputTerminal/>
+          <outputTerminal>
+            <wire targetNode="MappingRemittanceCaseReq"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="Trace2" type="Trace">
+          <inputTerminal/>
+          <outputTerminal>
+            <wire targetNode="ServiceInvoke1"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingRemittanceCaseRespErr8" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingRemittanceCaseRespErr8_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingRemittanceCaseRespErr8_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGRequestMsg"/>
+          <outputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg">
+            <wire targetNode="RemittanceCaseIntf_upsertCaseInfo_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+      </requestFlow>
+      <errorFlow>
+        <node displayName="upsertCaseInfo : RemittanceCaseIntf" name="RemittanceCaseIntf_upsertCaseInfo_ErrorInput" type="ErrorInput">
+          <outputTerminal name="catchAll" type="XMLSchema:anyType"/>
+        </node>
+        <node displayName="upsertCaseInfo : RemittanceCaseIntf" name="RemittanceCaseIntf_upsertCaseInfo_InputResponse" type="InputResponse">
+          <inputTerminal type="RemittanceCaseIntf:upsertCaseInfoResponseMsg"/>
+        </node>
+      </errorFlow>
+    </operation>
+  </interface>
+</mediationFlow>

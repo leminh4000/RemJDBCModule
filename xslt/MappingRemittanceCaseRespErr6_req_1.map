@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" targetNamespace="http://Remittance_JDBC_Common_Toolkit_Implementation/xslt/MappingRemittanceCaseRespErr6_req_1" version="8.0.4.0" xmlns:map="http://Remittance_JDBC_Common_Toolkit_Implementation/xslt/MappingRemittanceCaseRespErr6_req_1">
+    <input correlationContext="" message="{http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport}upsertBpm_Sor_RemittanceT_Remittance_Case_InfoBGMissingDataFaultMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/"/>
+    <output correlationContext="" message="{http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf}upsertCaseInfoResponseMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/"/>
+    <namespaces>
+        <namespace kind="supplement" prefix="io5" uri="http://www.w3.org/2005/08/addressing"/>
+        <namespace kind="supplement" prefix="io4" uri="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"/>
+        <namespace kind="supplement" prefix="io3" uri="http://www.ibm.com/websphere/sibx/smo/v6.0.1"/>
+        <namespace kind="supplement" prefix="io2" uri="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"/>
+        <namespace kind="supplement" prefix="in49" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceaccounting_informationlist"/>
+        <namespace kind="supplement" prefix="in48" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceresource_statusupdateallinputbg"/>
+        <namespace kind="supplement" prefix="in47" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_approval_historybatchresult"/>
+        <namespace kind="supplement" prefix="in42" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancegeneral_informationcontainer"/>
+        <namespace kind="supplement" prefix="in41" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/existsresult/existsresult"/>
+        <namespace kind="supplement" prefix="io6" uri="http://www.w3.org/2003/05/soap-envelope"/>
+        <namespace kind="supplement" prefix="in40" uri="http://com/ibm/j2ca/fault/afcfault"/>
+        <namespace kind="supplement" prefix="in46" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancegeneral_informationupdateallinput"/>
+        <namespace kind="supplement" prefix="in45" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet24_entry_informationcontainer"/>
+        <namespace kind="supplement" prefix="in44" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_approval_historybg"/>
+        <namespace kind="supplement" prefix="in43" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancegeneral_informationbg"/>
+        <namespace kind="supplement" prefix="in80" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_case_info"/>
+        <namespace kind="supplement" prefix="in72" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_audit_historycontainer"/>
+        <namespace kind="supplement" prefix="in37" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceresource_statusbg"/>
+        <namespace kind="supplement" prefix="in73" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet24_entry_informationbg"/>
+        <namespace kind="supplement" prefix="in36" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_case_infoupdateallinput"/>
+        <namespace kind="supplement" prefix="in74" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_approval_history"/>
+        <namespace kind="supplement" prefix="in39" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancedocumentbg"/>
+        <namespace kind="supplement" prefix="in75" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_approval_historylistbg"/>
+        <namespace kind="supplement" prefix="in38" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_audit_historyupdateallinput"/>
+        <namespace kind="supplement" prefix="in76" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_approval_historyupdateallinputbg"/>
+        <namespace kind="supplement" prefix="in77" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet24_entry_informationlistbg"/>
+        <namespace kind="supplement" prefix="in78" uri="wsdl.http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport"/>
+        <namespace kind="supplement" prefix="in79" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_audit_historybg"/>
+        <namespace kind="supplement" prefix="in31" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_audit_historylistbg"/>
+        <namespace kind="supplement" prefix="in30" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceaccounting_informationcontainer"/>
+        <namespace kind="supplement" prefix="in33" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceremittance_transactioncontainer"/>
+        <namespace kind="supplement" prefix="in32" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceremittance_transactionlistbg"/>
+        <namespace kind="supplement" prefix="in35" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceresource_statuslistbg"/>
+        <namespace kind="supplement" prefix="in34" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_approval_historyupdateallinput"/>
+        <namespace kind="supplement" prefix="in71" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancedocumentupdateallinputbg"/>
+        <namespace kind="supplement" prefix="in70" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet24_entry_informationbatchresult"/>
+        <namespace kind="supplement" prefix="in67" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceresource_statusupdateallinput"/>
+        <namespace kind="supplement" prefix="in68" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceremittance_transaction"/>
+        <namespace kind="supplement" prefix="in65" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_audit_historybatchresult"/>
+        <namespace kind="supplement" prefix="in66" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancedocumentlist"/>
+        <namespace kind="supplement" prefix="in29" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancegeneral_informationupdateallinputbg"/>
+        <namespace kind="supplement" prefix="in63" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_case_infolistbg"/>
+        <namespace kind="supplement" prefix="in28" uri="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport"/>
+        <namespace kind="supplement" prefix="in64" uri="http://www.ibm.com/xmlns/prod/websphere/bo/6.0.0"/>
+        <namespace kind="supplement" prefix="in27" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancegeneral_information"/>
+        <namespace kind="supplement" prefix="in61" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancegeneral_informationbatchresult"/>
+        <namespace kind="supplement" prefix="in26" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_approval_historylist"/>
+        <namespace kind="supplement" prefix="in62" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_case_infobatchresult"/>
+        <namespace kind="supplement" prefix="in25" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancegeneral_informationlistbg"/>
+        <namespace kind="supplement" prefix="in24" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bulkoperationresult/updateallresult"/>
+        <namespace kind="supplement" prefix="in23" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceremittance_transactionbatchresult"/>
+        <namespace kind="supplement" prefix="in22" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceaccounting_informationbg"/>
+        <namespace kind="supplement" prefix="in21" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_audit_history"/>
+        <namespace kind="supplement" prefix="in20" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceaccounting_informationupdateallinput"/>
+        <namespace kind="supplement" prefix="in69" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_audit_historylist"/>
+        <namespace kind="supplement" prefix="in2" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceresource_statuslist"/>
+        <namespace kind="supplement" prefix="in4" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancedocumentbatchresult"/>
+        <namespace kind="supplement" prefix="in3" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceremittance_transactionbg"/>
+        <namespace kind="supplement" prefix="in60" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_case_infocontainer"/>
+        <namespace kind="supplement" prefix="in" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet24_entry_information"/>
+        <namespace kind="supplement" prefix="io" uri="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
+        <namespace kind="supplement" prefix="in54" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_case_infolist"/>
+        <namespace kind="supplement" prefix="in19" uri="http://com/ibm/j2ca/fault"/>
+        <namespace kind="supplement" prefix="in55" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceresource_statusbatchresult"/>
+        <namespace kind="supplement" prefix="in18" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceresource_statuscontainer"/>
+        <namespace kind="supplement" prefix="in56" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceaccounting_informationbatchresult"/>
+        <namespace kind="supplement" prefix="in57" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceaccounting_informationupdateallinputbg"/>
+        <namespace kind="supplement" prefix="in50" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_case_infoupdateallinputbg"/>
+        <namespace kind="supplement" prefix="in15" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet24_entry_informationupdateallinput"/>
+        <namespace kind="supplement" prefix="in51" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet24_entry_informationupdateallinputbg"/>
+        <namespace kind="supplement" prefix="in14" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancedocumentlistbg"/>
+        <namespace kind="supplement" prefix="in52" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceaccounting_information"/>
+        <namespace kind="supplement" prefix="in17" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceaccounting_informationlistbg"/>
+        <namespace kind="supplement" prefix="in53" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_case_infobg"/>
+        <namespace kind="supplement" prefix="in16" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet24_entry_informationlist"/>
+        <namespace kind="supplement" prefix="in9" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancegeneral_informationlist"/>
+        <namespace kind="supplement" prefix="in11" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceremittance_transactionupdateallinput"/>
+        <namespace kind="supplement" prefix="in10" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceremittance_transactionupdateallinputbg"/>
+        <namespace kind="supplement" prefix="in13" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bulkoperationresult/deleteallresult"/>
+        <namespace kind="supplement" prefix="in12" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_approval_historycontainer"/>
+        <namespace kind="supplement" prefix="in58" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancedocumentupdateallinput"/>
+        <namespace kind="supplement" prefix="in5" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancet_remittance_audit_historyupdateallinputbg"/>
+        <namespace kind="supplement" prefix="in59" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancedocumentcontainer"/>
+        <namespace kind="supplement" prefix="in6" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittancedocument"/>
+        <namespace kind="supplement" prefix="in7" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceremittance_transactionlist"/>
+        <namespace kind="supplement" prefix="in8" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/bpm_sor_remittanceresource_status"/>
+        <namespace kind="supplement" prefix="out6" uri="http://RJDBCCT"/>
+        <namespace kind="supplement" prefix="out3" uri="http://Remittance_JDBC_Common_Toolkit_Library/InsertRemittanceTransaction"/>
+        <namespace kind="supplement" prefix="out2" uri="wsdl.http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf"/>
+        <namespace kind="supplement" prefix="out5" uri="http://Remittance_JDBC_Common_Toolkit_Library/InsertRemittanceCase"/>
+        <namespace kind="supplement" prefix="out4" uri="http://TCBT24Library"/>
+        <namespace kind="supplement" prefix="out" uri="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf"/>
+    </namespaces>
+    <mappingDeclaration name="MappingRemittanceCaseRespErr6_req_1">
+        <input namespace="http://www.ibm.com/websphere/sibx/smo/v6.0.1" path="smo"/>
+        <output namespace="http://www.ibm.com/websphere/sibx/smo/v6.0.1" path="smo"/>
+        <assign value="-500">
+            <output path="body/upsertCaseInfoResponse/output1/faultOut/status"/>
+        </assign>
+        <move>
+            <input path="body/MissingDataFault_element/message"/>
+            <output path="body/upsertCaseInfoResponse/output1/faultOut/message"/>
+        </move>
+        <move>
+            <input path="body/MissingDataFault_element/errorCode"/>
+            <output path="body/upsertCaseInfoResponse/output1/faultOut/errCode"/>
+        </move>
+    </mappingDeclaration>
+</mappingRoot>

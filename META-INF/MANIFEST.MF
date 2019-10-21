@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Class-Path: CWYBC_JDBC1.rar 
+ Remittance_JDBC_Common_Toolkit_Library.jar
+Created-By: 1.5.0 (IBM Corporation)
+

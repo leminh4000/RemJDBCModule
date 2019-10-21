@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AuditHistoryProcess" targetNamespace="http://RemJDBCModule/AuditHistoryProcessArtifacts" xmlns:ns="http://Remittance_JDBC_Common_Toolkit_Library/AuditHistoryIntf" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/">
+  <plnk:partnerLinkType name="AuditHistoryIntfPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="ns:AuditHistoryIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="AuditHistoryIntfPLT1">
+    <plnk:role name="Interface">
+      <plnk:portType name="ns:AuditHistoryIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="AuditHistory.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/AuditHistoryIntf"/>
+</wsdl:definitions>

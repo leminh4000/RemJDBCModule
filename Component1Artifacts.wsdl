@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Component1" targetNamespace="http://RemJDBCModule/Component1Artifacts" xmlns:ns0="http://Remittance_JDBC_Common_Toolkit_Library/AuditHistoryIntf" xmlns:ns1="http://Remittance_JDBC_Common_Toolkit_Library/ApprovalHistoryIntf" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:wsdl2="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf">
+  <plnk:partnerLinkType name="AuditHistoryIntfPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="ns0:AuditHistoryIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="ApprovalHistoryIntfPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="ns1:ApprovalHistoryIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="RemittanceCaseIntfPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl2:RemittanceCaseIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="AuditHistoryIntfPLT1">
+    <plnk:role name="Interface">
+      <plnk:portType name="ns0:AuditHistoryIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="RemittanceCaseIntfPLT1">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl2:RemittanceCaseIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="ApprovalHistoryIntfPLT1">
+    <plnk:role name="Interface">
+      <plnk:portType name="ns1:ApprovalHistoryIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <wsdl:import location="AuditHistory.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/AuditHistoryIntf"/>
+  <wsdl:import location="ApprovalHistoryIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/ApprovalHistoryIntf"/>
+  <wsdl:import location="RemittanceCaseIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf"/>
+</wsdl:definitions>

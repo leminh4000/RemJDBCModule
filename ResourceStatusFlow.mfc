@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mediationFlow xmlns="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlow" xmlns:ResourceStatusIntf="http://Remittance_JDBC_Common_Toolkit_Library/ResourceStatusIntf" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:mfcex="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlowExtension" xmlns:ns2="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport" name="ResourceStatusFlow" targetNamespace="http://RemJDBCModule/ResourceStatusFlow">
+  <import location="ResourceStatusIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/ResourceStatusIntf"/>
+  <import location="JDBCImport.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport"/>
+  <promotedProperty name="ServiceInvoke1.retryOn" group="RemJDBCModule.ResourceStatusFlow" value="0"/>
+  <promotedProperty name="ServiceInvoke1.retryCount" group="RemJDBCModule.ResourceStatusFlow" value="0"/>
+  <promotedProperty name="ServiceInvoke1.retryDelay" group="RemJDBCModule.ResourceStatusFlow" value="0"/>
+  <reference name="JDBCImportPartner" portType="ns2:JDBCImport"/>
+  <interface portType="ResourceStatusIntf:ResourceStatusIntf">
+    <operation name="upsertResourceStatus">
+      <requestFlow mfcex:autoLayout="false">
+        <node displayName="upsertResourceStatus : ResourceStatusIntf" name="ResourceStatusIntf_upsertResourceStatus_Input" type="Input" mfcex:x="10" mfcex:y="145">
+          <outputTerminal type="ResourceStatusIntf:upsertResourceStatusRequestMsg">
+            <wire targetNode="MappingResourceStatusReq"/>
+          </outputTerminal>
+        </node>
+        <node displayName="upsertResourceStatus : ResourceStatusIntf" name="ResourceStatusIntf_upsertResourceStatus_InputResponse" type="InputResponse" mfcex:x="809" mfcex:y="20">
+          <inputTerminal type="ResourceStatusIntf:upsertResourceStatusResponseMsg"/>
+        </node>
+        <node name="ServiceInvoke1" type="ServiceInvoke" mfcex:x="475" mfcex:y="87">
+          <property name="referenceName" value="JDBCImportPartner"/>
+          <property name="operationName" value="upsertBpm_Sor_RemittanceResource_StatusBG"/>
+          <property name="invocationStyle" value="6"/>
+          <property name="retryOn" promotedPropertyGroup="RemJDBCModule.ResourceStatusFlow" promotedPropertyName="ServiceInvoke1.retryOn"/>
+          <property name="retryCount" promotedPropertyGroup="RemJDBCModule.ResourceStatusFlow" promotedPropertyName="ServiceInvoke1.retryCount"/>
+          <property name="retryDelay" promotedPropertyGroup="RemJDBCModule.ResourceStatusFlow" promotedPropertyName="ServiceInvoke1.retryDelay"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGRequestMsg"/>
+          <outputTerminal type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGResponseMsg">
+            <wire targetNode="MappingResourceStatusResp"/>
+          </outputTerminal>
+          <outputTerminal name="timeout" type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGRequestMsg"/>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceResource_StatusBGObjectNotFoundFaultMsg" type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGObjectNotFoundFaultMsg">
+            <wire targetNode="Fail1"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceResource_StatusBGUniqueConstraintFaultMsg" type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGUniqueConstraintFaultMsg">
+            <wire targetNode="Fail2"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceResource_StatusBGMultipleMatchingRecordsFaultMsg" type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGMultipleMatchingRecordsFaultMsg">
+            <wire targetNode="Fail3"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceResource_StatusBGIntegrityConstraintFaultMsg" type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGIntegrityConstraintFaultMsg">
+            <wire targetNode="Fail4"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceResource_StatusBGMissingDataFaultMsg" type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGMissingDataFaultMsg">
+            <wire targetNode="Fail5"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceResource_StatusBGRecordNotFoundFaultMsg" type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGRecordNotFoundFaultMsg">
+            <wire targetNode="Fail6"/>
+          </outputTerminal>
+          <failTerminal>
+            <wire targetNode="Fail7"/>
+          </failTerminal>
+        </node>
+        <node name="MappingResourceStatusReq" type="XSLTransformation" mfcex:x="330" mfcex:y="169">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/MappingResourceStatusReq_req_2.xsl"/>
+          <property name="XMXMap" value="xslt/MappingResourceStatusReq_req_2.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ResourceStatusIntf:upsertResourceStatusRequestMsg"/>
+          <outputTerminal type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGRequestMsg">
+            <wire targetNode="ServiceInvoke1"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingResourceStatusResp" type="XSLTransformation" mfcex:x="669" mfcex:y="51">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/MappingResourceStatusResp_req_2.xsl"/>
+          <property name="XMXMap" value="xslt/MappingResourceStatusResp_req_2.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceResource_StatusBGResponseMsg"/>
+          <outputTerminal type="ResourceStatusIntf:upsertResourceStatusResponseMsg">
+            <wire targetNode="ResourceStatusIntf_upsertResourceStatus_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="Fail1" type="Fail" mfcex:x="756" mfcex:y="166">
+          <property name="path" value="/body/ObjectNotFoundFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail2" type="Fail" mfcex:x="662" mfcex:y="262">
+          <property name="path" value="/body/UniqueConstraintFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail3" type="Fail" mfcex:x="514" mfcex:y="305">
+          <property name="path" value="/body/MultipleMatchingRecordsFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail4" type="Fail" mfcex:x="389" mfcex:y="304">
+          <property name="path" value="/body/IntegrityConstraintFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail5" type="Fail" mfcex:x="274" mfcex:y="290">
+          <property name="path" value="/body/MissingDataFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail6" type="Fail" mfcex:x="173" mfcex:y="229">
+          <property name="path" value="/body/RecordNotFoundFault_element"/>
+          <inputTerminal/>
+        </node>
+        <node name="Fail7" type="Fail" mfcex:x="722" mfcex:y="362">
+          <inputTerminal/>
+        </node>
+      </requestFlow>
+      <errorFlow mfcex:autoLayout="false">
+        <node displayName="upsertResourceStatus : ResourceStatusIntf" name="ResourceStatusIntf_upsertResourceStatus_ErrorInput" type="ErrorInput" mfcex:x="10" mfcex:y="20">
+          <outputTerminal name="catchAll" type="XMLSchema:anyType"/>
+        </node>
+        <node displayName="upsertResourceStatus : ResourceStatusIntf" name="ResourceStatusIntf_upsertResourceStatus_InputResponse" type="InputResponse" mfcex:x="537" mfcex:y="20">
+          <inputTerminal type="ResourceStatusIntf:upsertResourceStatusResponseMsg"/>
+        </node>
+      </errorFlow>
+    </operation>
+  </interface>
+</mediationFlow>

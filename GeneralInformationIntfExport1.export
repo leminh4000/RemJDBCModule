@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:GeneralInformationInt="http://Remittance_JDBC_Common_Toolkit_Library/GeneralInformationInt" xmlns:ns1="http://Remittance_JDBC_Common_Toolkit_Library/GeneralInformationIntf" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="GeneralInformationIntfExport1" name="GeneralInformationIntfExport1" target="GeneralInformationProcess">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:GeneralInformationIntf"/>
+  </interfaces>
+</scdl:export>

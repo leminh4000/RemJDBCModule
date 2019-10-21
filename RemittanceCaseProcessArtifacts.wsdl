@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="RemittanceCaseProcess" targetNamespace="http://RemJDBCModule/RemittanceCaseProcessArtifacts" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://RemJDBCModule/RemittanceCaseProcessArtifacts" xmlns:wsdl0="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <plnk:partnerLinkType name="RemittanceCaseIntfPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:RemittanceCaseIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="RemittanceCaseIntfPLT1">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:RemittanceCaseIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="RemittanceCaseIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf"/>
+</wsdl:definitions>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ResourceStatusInt="http://Remittance_JDBC_Common_Toolkit_Library/ResourceStatusInt" xmlns:ns1="http://Remittance_JDBC_Common_Toolkit_Library/ResourceStatusIntf" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ResourceStatusIntfExport1" name="ResourceStatusIntfExport1" target="ResourceStatusProcess">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:ResourceStatusIntf"/>
+  </interfaces>
+</scdl:export>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ApprovalHistoryInt="http://Remittance_JDBC_Common_Toolkit_Library/ApprovalHistoryInt" xmlns:ns1="http://Remittance_JDBC_Common_Toolkit_Library/ApprovalHistoryIntf" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="ApprovalHistoryIntfExport1" name="ApprovalHistoryIntfExport1" target="ApprovalHistoryProcess">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="sync" portType="ns1:ApprovalHistoryIntf"/>
+  </interfaces>
+</scdl:export>

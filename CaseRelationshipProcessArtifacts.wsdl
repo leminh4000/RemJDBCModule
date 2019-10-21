@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CaseRelationshipProcess" targetNamespace="http://RemJDBCModule/CaseRelationshipProcessArtifacts" xmlns:ns0="http://Remittance_JDBC_Common_Toolkit_Library/CaseRelationshipIntf" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/">
+  <plnk:partnerLinkType name="CaseRelationshipIntfPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="ns0:CaseRelationshipIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="CaseRelationshipIntfPLT1">
+    <plnk:role name="Interface">
+      <plnk:portType name="ns0:CaseRelationshipIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="CaseRelationshipIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/CaseRelationshipIntf"/>
+</wsdl:definitions>

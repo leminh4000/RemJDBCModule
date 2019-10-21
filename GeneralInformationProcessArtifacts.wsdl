@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="GeneralInformationProcess" targetNamespace="http://RemJDBCModule/GeneralInformationProcessArtifacts" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://RemJDBCModule/GeneralInformationProcessArtifacts" xmlns:wsdl0="http://Remittance_JDBC_Common_Toolkit_Library/GeneralInformationIntf" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <plnk:partnerLinkType name="GeneralInformationIntfPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:GeneralInformationIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="GeneralInformationIntfPLT1">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:GeneralInformationIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="GeneralInformationIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/GeneralInformationIntf"/>
+</wsdl:definitions>

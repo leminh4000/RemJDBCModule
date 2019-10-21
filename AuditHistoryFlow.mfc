@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mediationFlow xmlns="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlow" xmlns:AuditHistoryIntf="http://Remittance_JDBC_Common_Toolkit_Library/AuditHistoryIntf" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:mfcex="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlowExtension" xmlns:ns2="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport" name="AuditHistoryFlow" targetNamespace="http://RemJDBCModule/AuditHistoryFlow">
+  <import location="AuditHistory.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/AuditHistoryIntf"/>
+  <import location="JDBCImport.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Implementation/JDBCImport"/>
+  <promotedProperty name="ServiceInvoke1.retryOn" group="RemJDBCModule.AuditHistoryFlow" value="0"/>
+  <promotedProperty name="ServiceInvoke1.retryCount" group="RemJDBCModule.AuditHistoryFlow" value="0"/>
+  <promotedProperty name="ServiceInvoke1.retryDelay" group="RemJDBCModule.AuditHistoryFlow" value="0"/>
+  <reference name="JDBCImportPartner" portType="ns2:JDBCImport"/>
+  <interface portType="AuditHistoryIntf:AuditHistoryIntf">
+    <operation name="upsertAuditHistory">
+      <requestFlow>
+        <node displayName="upsertAuditHistory : AuditHistoryIntf" name="AuditHistoryIntf_upsertAuditHistory_Input" type="Input">
+          <outputTerminal type="AuditHistoryIntf:upsertAuditHistoryRequestMsg">
+            <wire targetNode="MappingAuditHistoryReq"/>
+          </outputTerminal>
+        </node>
+        <node displayName="upsertAuditHistory : AuditHistoryIntf" name="AuditHistoryIntf_upsertAuditHistory_InputResponse" type="InputResponse">
+          <inputTerminal type="AuditHistoryIntf:upsertAuditHistoryResponseMsg"/>
+        </node>
+        <node name="ServiceInvoke1" type="ServiceInvoke">
+          <property name="referenceName" value="JDBCImportPartner"/>
+          <property name="operationName" value="upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBG"/>
+          <property name="invocationStyle" value="6"/>
+          <property name="retryOn" promotedPropertyGroup="RemJDBCModule.AuditHistoryFlow" promotedPropertyName="ServiceInvoke1.retryOn"/>
+          <property name="retryCount" promotedPropertyGroup="RemJDBCModule.AuditHistoryFlow" promotedPropertyName="ServiceInvoke1.retryCount"/>
+          <property name="retryDelay" promotedPropertyGroup="RemJDBCModule.AuditHistoryFlow" promotedPropertyName="ServiceInvoke1.retryDelay"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGRequestMsg"/>
+          <outputTerminal type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGResponseMsg">
+            <wire targetNode="MappingAuditHistoryResp"/>
+          </outputTerminal>
+          <outputTerminal name="timeout" type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGRequestMsg"/>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGObjectNotFoundFaultMsg" type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGObjectNotFoundFaultMsg">
+            <wire targetNode="MappingAuditHistoryRespErr1"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGUniqueConstraintFaultMsg" type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGUniqueConstraintFaultMsg">
+            <wire targetNode="MappingAuditHistoryRespErr2"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGMultipleMatchingRecordsFaultMsg" type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGMultipleMatchingRecordsFaultMsg">
+            <wire targetNode="MappingAuditHistoryRespErr3"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGIntegrityConstraintFaultMsg" type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGIntegrityConstraintFaultMsg">
+            <wire targetNode="MappingAuditHistoryRespErr4"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGMissingDataFaultMsg" type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGMissingDataFaultMsg">
+            <wire targetNode="MappingAuditHistoryRespErr51"/>
+          </outputTerminal>
+          <outputTerminal description="Propagates the modeled fault message, received from the service invocation. There is no failInfo data associated with a modeled fault." name="upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGRecordNotFoundFaultMsg" type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGRecordNotFoundFaultMsg">
+            <wire targetNode="MappingAuditHistoryRespErr6"/>
+          </outputTerminal>
+          <failTerminal>
+            <wire targetNode="Fail1"/>
+          </failTerminal>
+        </node>
+        <node name="MappingAuditHistoryReq" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingAuditHistoryReq_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingAuditHistoryReq_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="AuditHistoryIntf:upsertAuditHistoryRequestMsg"/>
+          <outputTerminal type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGRequestMsg">
+            <wire targetNode="ServiceInvoke1"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingAuditHistoryResp" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingAuditHistoryResp_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingAuditHistoryResp_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGResponseMsg"/>
+          <outputTerminal type="AuditHistoryIntf:upsertAuditHistoryResponseMsg">
+            <wire targetNode="AuditHistoryIntf_upsertAuditHistory_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingAuditHistoryRespErr1" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingAuditHistoryRespErr1_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingAuditHistoryRespErr1_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGObjectNotFoundFaultMsg"/>
+          <outputTerminal type="AuditHistoryIntf:upsertAuditHistoryResponseMsg">
+            <wire targetNode="AuditHistoryIntf_upsertAuditHistory_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingAuditHistoryRespErr2" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingAuditHistoryRespErr2_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingAuditHistoryRespErr2_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGUniqueConstraintFaultMsg"/>
+          <outputTerminal type="AuditHistoryIntf:upsertAuditHistoryResponseMsg">
+            <wire targetNode="AuditHistoryIntf_upsertAuditHistory_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingAuditHistoryRespErr3" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingAuditHistoryRespErr3_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingAuditHistoryRespErr3_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGMultipleMatchingRecordsFaultMsg"/>
+          <outputTerminal type="AuditHistoryIntf:upsertAuditHistoryResponseMsg">
+            <wire targetNode="AuditHistoryIntf_upsertAuditHistory_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingAuditHistoryRespErr4" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingAuditHistoryRespErr4_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingAuditHistoryRespErr4_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGIntegrityConstraintFaultMsg"/>
+          <outputTerminal type="AuditHistoryIntf:upsertAuditHistoryResponseMsg">
+            <wire targetNode="AuditHistoryIntf_upsertAuditHistory_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node displayName="MappingAuditHistoryRespErr5" name="MappingAuditHistoryRespErr51" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingAuditHistoryRespErr41_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingAuditHistoryRespErr41_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGMissingDataFaultMsg"/>
+          <outputTerminal type="AuditHistoryIntf:upsertAuditHistoryResponseMsg">
+            <wire targetNode="AuditHistoryIntf_upsertAuditHistory_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="MappingAuditHistoryRespErr6" type="XSLTransformation">
+          <property name="root" value="/"/>
+          <property name="XSLTransform" value="xslt/MappingAuditHistoryRespErr6_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/MappingAuditHistoryRespErr6_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:upsertBpm_Sor_RemittanceT_Remittance_Audit_HistoryBGRecordNotFoundFaultMsg"/>
+          <outputTerminal type="AuditHistoryIntf:upsertAuditHistoryResponseMsg">
+            <wire targetNode="AuditHistoryIntf_upsertAuditHistory_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="Fail1" type="Fail">
+          <inputTerminal/>
+        </node>
+      </requestFlow>
+      <errorFlow mfcex:autoLayout="false">
+        <node displayName="upsertAuditHistory : AuditHistoryIntf" name="AuditHistoryIntf_upsertAuditHistory_ErrorInput" type="ErrorInput" mfcex:x="10" mfcex:y="20">
+          <outputTerminal name="catchAll" type="XMLSchema:anyType"/>
+        </node>
+        <node displayName="upsertAuditHistory : AuditHistoryIntf" name="AuditHistoryIntf_upsertAuditHistory_InputResponse" type="InputResponse" mfcex:x="537" mfcex:y="20">
+          <inputTerminal type="AuditHistoryIntf:upsertAuditHistoryResponseMsg"/>
+        </node>
+      </errorFlow>
+    </operation>
+  </interface>
+</mediationFlow>

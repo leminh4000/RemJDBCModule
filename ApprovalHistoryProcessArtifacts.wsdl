@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="ApprovalHistoryProcess" targetNamespace="http://RemJDBCModule/ApprovalHistoryProcessArtifacts" xmlns:ns0="http://Remittance_JDBC_Common_Toolkit_Library/ApprovalHistoryIntf" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/">
+  <plnk:partnerLinkType name="ApprovalHistoryIntfPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="ns0:ApprovalHistoryIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="ApprovalHistoryIntfPLT1">
+    <plnk:role name="Interface">
+      <plnk:portType name="ns0:ApprovalHistoryIntf"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="ApprovalHistoryIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/ApprovalHistoryIntf"/>
+</wsdl:definitions>

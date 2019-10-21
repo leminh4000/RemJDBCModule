@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://RemJDBCModule/RemittanceCaseProcessArtifacts" xmlns:ns0="http://Remittance_JDBC_Common_Toolkit_Library/InsertRemittanceCase" xmlns:ns1="http://Remittance_JDBC_Common_Toolkit_Library/InsertRemittanceTransaction" xmlns:ns2="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="RemittanceCaseProcess" suppressJoinFailure="yes" targetNamespace="http://RemJDBCModule" wpc:continueOnError="no" wpc:displayName="RemittanceCaseProcess" wpc:executionMode="microflow" wpc:id="1" wpc:version="IBM_8.5.500">
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="RemittanceCaseIntf.wsdl" namespace="http://Remittance_JDBC_Common_Toolkit_Library/RemittanceCaseIntf"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="RemittanceCaseProcessArtifacts.wsdl" namespace="http://RemJDBCModule/RemittanceCaseProcessArtifacts"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="InsertRemittanceCase/RemittanceCaseReq.xsd" namespace="http://Remittance_JDBC_Common_Toolkit_Library/InsertRemittanceCase"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="InsertRemittanceTransaction/RemittanceTransactionResp.xsd" namespace="http://Remittance_JDBC_Common_Toolkit_Library/InsertRemittanceTransaction"/>
+  <bpws:partnerLinks>
+    <bpws:partnerLink myRole="Interface" name="RemittanceCaseIntf" partnerLinkType="ns:RemittanceCaseIntfPLT" wpc:id="2"/>
+    <bpws:partnerLink name="RemittanceCaseIntfPartner" partnerLinkType="ns:RemittanceCaseIntfPLT1" partnerRole="Interface" wpc:id="3"/>
+  </bpws:partnerLinks>
+  <bpws:variables>
+    <bpws:variable name="input1" type="ns0:RemittanceCaseReq" wpc:id="7"/>
+    <bpws:variable name="output1" type="ns1:RemittanceTransactionResp" wpc:id="8"/>
+  </bpws:variables>
+  <bpws:sequence name="HiddenSequence" wpc:id="1073741828">
+    <bpws:receive createInstance="yes" name="Receive" operation="upsertCaseInfo" partnerLink="RemittanceCaseIntf" portType="ns2:RemittanceCaseIntf" wpc:displayName="Receive" wpc:id="5" wpc:transactionalBehavior="commitAfter">
+      <wpc:output>
+        <wpc:parameter name="input1" variable="input1"/>
+      </wpc:output>
+    </bpws:receive>
+    <bpws:invoke name="Invoke" operation="upsertCaseInfo" partnerLink="RemittanceCaseIntfPartner" portType="ns2:RemittanceCaseIntf" wpc:continueOnError="inherit" wpc:displayName="Invoke" wpc:id="9">
+      <wpc:input>
+        <wpc:parameter name="input1" variable="input1"/>
+      </wpc:input>
+      <wpc:output>
+        <wpc:parameter name="output1" variable="output1"/>
+      </wpc:output>
+    </bpws:invoke>
+    <bpws:reply name="Reply" operation="upsertCaseInfo" partnerLink="RemittanceCaseIntf" portType="ns2:RemittanceCaseIntf" wpc:displayName="Reply" wpc:id="6">
+      <wpc:input>
+        <wpc:parameter name="output1" variable="output1"/>
+      </wpc:input>
+    </bpws:reply>
+  </bpws:sequence>
+</bpws:process>
